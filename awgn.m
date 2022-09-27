@@ -1,3 +1,5 @@
+
+% Modelling Gaussian white additive noise
 function rx = awgn(tx, snr)
 %AwgnChannel adds complex additive white Gaussian noise to a transmission
 % Variance of the noise is N0/2

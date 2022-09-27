@@ -1,6 +1,5 @@
-
+%converting binary code to decimals
 function d = bi2de(b, varargin) 
-
 % Typical error checking. 
 narginchk(1,3); 
  
@@ -8,7 +7,6 @@ narginchk(1,3);
 sigStr = ''; 
 flag = ''; 
 p = []; 
- 
 % Check the type of the input B 
 if ~(isnumeric(b) || islogical(b)) 
     error('The binary input must be numeric or logical.'); 
@@ -29,7 +27,6 @@ for i=1:length(varargin)
       error('Optional parameters must be string or numeric.'); 
    end 
 end 
- 
 % --- Identify parameter signitures and assign values to variables 
 switch sigStr 
      
@@ -97,9 +94,7 @@ if strcmp(flag, 'left-msb')
    b2 = b; 
    b = b2(:,n:-1:1); 
  
-end 
-
-
+end
 max_length = 1024; 
 pow2vector = p.^(0:1:(size(b,2)-1)); 
 size_B = min(max_length,size(b,2)); 
