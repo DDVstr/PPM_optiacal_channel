@@ -16,11 +16,38 @@ for i=1:length(EbN0)
 
     Rx_PPM_th=zeros(1,Lsig);
     Rx_PPM_th(MF_out>0.5)=1;
-   % [No_of_Error(i), ser_hdd(i)]= biterr(Rx_PPM_th,PPM);
-
+   [No_of_Error(i), ser_hdd(i)]= biterr(Rx_PPM_th,PPM);
+   % %soft decision decoding
+    PPM_SDD=[];
+    start=1;
+    finish=2^M;
+    for k=1:nsym
+        temp=MF_out(start:finish);
+        m=max(temp);
+        temp1=zeros(1,2^M);
+        temp1(temp==m)=1;
+        PPM_SDD=[PPM_SDD temp1];
+        start=finish+1;
+        finish=finish+2^M;
+    end
+    [No_of_Error(i), ser_sdd(i)]= biterr(PPM_SDD,PPM);
 end
-% theoretical calculation 
-Pse_ppm_hard=qfunc(sqrt(M*2^M*0.5*SNR)); 
-semilogy(EbN0,Pse_ppm_hard,'k--','linewidth',2);
+
+%plotting current results
+% theoretical calculation
+%xlabel('SNR, db')
+
+Pse_ppm_hard=qfunc(sqrt(M*2^M*0.5*SNR));
+Pse_ppm_soft=qfunc(sqrt(M*2^M*SNR));
+semilogy(EbN0,Pse_ppm_hard,'b--',EbN0,Pse_ppm_soft,'r--');
+xlim([0,5]);
+ylabel('BER');
+xlabel('SNR, (dB)')
+title(['Probability of Bit Error over AWGN channel'])
+%legend('x^2','x^3','Location','northwest')
+
+grid on;
+
+
 
                         
