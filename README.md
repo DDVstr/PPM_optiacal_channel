@@ -7,9 +7,9 @@ Modelling Simple OWC channel
 - This repository contains of methods which creates the model of simple OWC channel using AWGN noise model.
 
 ### BER vs SNR characteristics
-![alt text](source/BER_for_AWGN.jpg)
+![alt text](FSO_PPM/source/BER_for_AWGN.jpg)
 
 ### Simple model of OWC channel with HDD and SDD
-![alt text](source/OWC_hard_rec.png)
+![alt text](FSO_PPM/source/OWC_hard_rec.png)
 
 **Zhornichenko Ilya**
