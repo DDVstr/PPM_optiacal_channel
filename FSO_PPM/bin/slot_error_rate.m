@@ -39,12 +39,12 @@ end
 
 Pse_ppm_hard=qfunc(sqrt(M*2^M*0.5*SNR));
 Pse_ppm_soft=qfunc(sqrt(M*2^M*SNR));
-semilogy(EbN0,Pse_ppm_hard,'b--',EbN0,Pse_ppm_soft,'r--');
+semilogy(EbN0,Pse_ppm_hard,'-s',EbN0,Pse_ppm_soft,'-*','LineWidth',1);
 xlim([0,5]);
 ylabel('BER');
 xlabel('SNR, (dB)')
 title(['Probability of Bit Error over AWGN channel'])
-%legend('x^2','x^3','Location','northwest')
+legend('HDD','SDD','Location','northwest')
 
 grid on;
 
